@@ -14,6 +14,7 @@
 
 int main(int argc, const char* argv[])
 {
-	Day01::RunDay();
+	// Day01::RunDay();
+	Day02::RunDay();
 	return 0;
 }
