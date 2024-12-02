@@ -17,9 +17,12 @@
 #include <sstream>
 #include <algorithm>
 #include <thread>
+#include <mutex>
 
 namespace Day01
 {
+	std::mutex coutMutex;
+
 	void PartA(const StringVector& inputLines)
 	{
 		uint32_t result = 0;
@@ -45,6 +48,7 @@ namespace Day01
 			result += distance;
 		}
 
+		std::lock_guard<std::mutex> lock(coutMutex);
 		std::cout << "Part A: " << result << std::endl;
 	}
 
@@ -68,6 +72,7 @@ namespace Day01
 			result += (num * std::count(rightList.cbegin(), rightList.cend(), num));
 		}
 
+		std::lock_guard<std::mutex> lock(coutMutex);
 		std::cout << "Part B: " << result << std::endl;
 	}
 
