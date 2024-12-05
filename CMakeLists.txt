@@ -10,6 +10,7 @@ SET (SRC_FILES
 		${SRC_DIR}/day02.cpp
 		${SRC_DIR}/day03.cpp
 		${SRC_DIR}/day04.cpp
+		${SRC_DIR}/day05.cpp
 )
 
 ADD_EXECUTABLE(advent2024 ${SRC_FILES})
