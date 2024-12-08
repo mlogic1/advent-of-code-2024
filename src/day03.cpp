@@ -26,31 +26,47 @@ namespace Day03
 
 	void PartA(const StringVector& inputLines)
 	{
-		std::regex mulRegex(R"(\bmul\(\d+,\d+\))");
-		std::smatch regexMatch;
-		if (std::regex_search(inputLines[0], regexMatch, mulRegex))
+		uint32_t total = 0;
+
+		for (const std::string& line : inputLines)
 		{
-			auto a = regexMatch[1].str();
-			auto b = regexMatch[2].str();
+			std::regex mulRegex(R"(mul\(\d+,\d+\))");
+			std::smatch regexMatch;
+
+			std::string::const_iterator searchStart(line.cbegin());
+
+			while (std::regex_search(searchStart, line.cend(), regexMatch, mulRegex))
+			{
+				string matched = regexMatch[0];
+				std::regex numRegex(R"(\d+)");
+				std::sregex_iterator numBegin(matched.begin(), matched.end(), numRegex);
+
+				std::sregex_iterator numEnd;
+				int num1 = stoi(numBegin->str());
+				++numBegin;
+				int num2 = stoi(numBegin->str());
+				int z = 1;
+				searchStart = regexMatch.suffix().first;
+				total += (num1 * num2);
+			}
 		}
 
-
 		std::lock_guard<std::mutex> lock(coutMutex);
-		std::cout << "Part A: " << 1335 << std::endl;
+		std::cout << "Part A: " << total << std::endl;
 	}
 
 	void PartB(const StringVector& inputLines)
 	{
-
+		uint32_t total = 0;
 
 		std::lock_guard<std::mutex> lock(coutMutex);
-		std::cout << "Part B: " << 1336 << std::endl;
+		std::cout << "Part B: " << total << std::endl;
 	}
 
 	void RunDay()
 	{
 		StringVector inputLines;
-		if (!common::ReadEntireFileStrings("inputs/sample.txt", inputLines))
+		if (!common::ReadEntireFileStrings("inputs/sample_day3.txt", inputLines))
 		{
 			throw std::runtime_error("[Day 03] Unable to open input file.");
 		}
