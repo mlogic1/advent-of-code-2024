@@ -1,0 +1,9 @@
+{
+    "cmake.debugConfig": {
+        "cwd": "${workspaceFolder}/build"
+    },
+    "files.associations": {
+        "xtree": "cpp",
+        "mutex": "cpp"
+    }
+}
