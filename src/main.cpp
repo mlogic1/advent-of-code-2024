@@ -23,6 +23,7 @@ int main(int argc, const char* argv[])
 	// Day07::RunDay();
 	// Day10::RunDay();
 	// Day11::RunDay();
-	Day12::RunDay();
+	// Day12::RunDay();
+	Day13::RunDay();
 	return 0;
 }
